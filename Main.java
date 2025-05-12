@@ -8,9 +8,9 @@ public class Main {
         int maxEarnings = 100000;
 
         //Change These Two Numbers from 0 to 100
-        int tuitionWeight =  20;
-        int academicProfileWeight = 100;
-        int earningsWeight = 100;
+        int tuitionWeight =  100;
+        int academicProfileWeight = 50;
+        int earningsWeight = 50;
 
         academicProfile HarvardAP = new academicProfile(1550, 35, 3.94, 94.4);
         College Harvard = new College("Harvard", 56500, HarvardAP.calculateAcademicScore(), 101817);

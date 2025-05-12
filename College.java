@@ -12,8 +12,7 @@ public class College {
         this.earnings = earnings;
     }
 
-    public double calculateScore(double tuitionWeight, double academicProfileWeight, double earningsWeight,
-                                 double maxTuition, double maxAcademic, double maxEarnings){
+    public double calculateScore(double tuitionWeight, double academicProfileWeight, double earningsWeight, double maxTuition, double maxAcademic, double maxEarnings){
         double tuitionScore = 1 - (tuition / maxTuition);
         double academicProfileScore = academicProfile / maxAcademic;
         double earningsScore = earnings / maxEarnings;
