@@ -7,10 +7,10 @@ public class Main {
         int maxAcademicProfile = 100;
         int maxEarnings = 100000;
 
-        //Change These Two Numbers from 0 to 100
+        //Change These Three Numbers from 0 to 100
         int tuitionWeight =  100;
-        int academicProfileWeight = 50;
-        int earningsWeight = 50;
+        int academicProfileWeight = 100;
+        int earningsWeight = 100;
 
         academicProfile HarvardAP = new academicProfile(1550, 35, 3.94, 94.4);
         College Harvard = new College("Harvard", 56500, HarvardAP.calculateAcademicScore(), 101817);
@@ -28,7 +28,7 @@ public class Main {
         College SonomaState = new College("SonomaState", 5742, SonomaAP.calculateAcademicScore(), 65986);
         colleges.add(SonomaState);
         
-        rankColleges(colleges, tuitionWeight, academicProfileWeight, earningsWeight, maxTuition, maxAcademicProfile, maxEarnings);   
+        rankColleges(colleges, tuitionWeight, academicProfileWeight, earningsWeight, maxTuition, maxAcademicProfile, maxEarnings);
      }
 
     public static void rankColleges(ArrayList<College> colleges, double tuitionWeight, double academicWeight, double earningsWeight, double maxTuition, double maxAcademic, double maxEarnings) {
@@ -49,6 +49,7 @@ public class Main {
         }
     
         // Print the rankings
+        System.out.println("Your Rankings: \n Earnings: " + earningsWeight + " Academic Profile: " + academicWeight + " Tuition: " + tuitionWeight);
         System.out.println("College Rankings:");
         for (int i = 0; i < colleges.size(); i++) {
             College c = colleges.get(i);
