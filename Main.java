@@ -55,7 +55,10 @@ public class Main {
         }
     
         // Print the rankings
-        System.out.println("Your Rankings: \n Earnings: " + earningsWeight + " Academic Profile: " + academicWeight + " Tuition: " + tuitionWeight + " Racial Diversity: " + racialDiversityWeight);
+        double totalWeight = (earningsWeight + academicWeight + tuitionWeight + racialDiversityWeight)/100;
+        System.out.println("Your Rankings: \n Earnings: " + (int) earningsWeight/totalWeight + "% Academic Profile: " + (int) academicWeight/totalWeight 
+        + "% Tuition: " + (int) tuitionWeight/totalWeight + " Racial Diversity: " + (int) racialDiversityWeight/totalWeight + "%");
+        
         System.out.println("College Rankings:");
         for (int i = 0; i < colleges.size(); i++) {
             College c = colleges.get(i);
