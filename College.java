@@ -3,20 +3,24 @@ public class College {
     private int tuition;
     private double academicProfile;
     private double earnings;
+    private double racialDiversity;
     private double score;
 
-    public College(String name, int tuition, double academicProfile, double earnings){
+    public College(String name, int tuition, double academicProfile, double earnings, double racialDiversityScore){
         this.name = name;
         this.tuition = tuition;
         this.academicProfile = academicProfile;
         this.earnings = earnings;
+        this.racialDiversity = racialDiversityScore;
     }
 
-    public double calculateScore(double tuitionWeight, double academicProfileWeight, double earningsWeight, double maxTuition, double maxAcademic, double maxEarnings){
+    public double calculateScore(double tuitionWeight, double academicProfileWeight, double earningsWeight, double racialDiversityWeight,
+    double maxTuition, double maxAcademic, double maxEarnings){
+        
         double tuitionScore = 1 - (tuition / maxTuition);
         double academicProfileScore = academicProfile / maxAcademic;
         double earningsScore = earnings / maxEarnings;
-        score = (tuitionScore * tuitionWeight + academicProfileScore * academicProfileWeight + earningsScore * earningsWeight);
+        score = (tuitionScore * tuitionWeight + academicProfileScore * academicProfileWeight + earningsScore * earningsWeight + racialDiversity * racialDiversityWeight);
         return score;
     }
 

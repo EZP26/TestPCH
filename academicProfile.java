@@ -3,12 +3,14 @@ public class academicProfile {
     private int actScore;          // out of 36
     private double gpa;            // 0.0 - 4.0
     private double top10Percent;   // % of students in top 10% of HS class
+    private double graduationRate;
 
-    public academicProfile(int satScore, int actScore, double gpa, double top10Percent) {
+    public academicProfile(int satScore, int actScore, double gpa, double top10Percent, double graduationRate) {
         this.satScore = satScore;
         this.actScore = actScore;
         this.gpa = gpa;
         this.top10Percent = top10Percent;
+        this.graduationRate = graduationRate/100;
     }
 
     public int getSatScore() {
@@ -33,9 +35,8 @@ public class academicProfile {
         double gpaNormalized = gpa / 4.0;              // 4.0 is max GPA
         double classRankNormalized = top10Percent / 100.0;
 
-        return (satNormalized * 0.25 +
-                actNormalized * 0.25 + 
-                gpaNormalized * 0.25 +
-                classRankNormalized * 0.25) * 100;
+        return ((satNormalized + actNormalized)* 0.20 + 
+                graduationRate * 0.40 + 
+                (gpaNormalized + classRankNormalized) * 0.20) * 100;
     }
 }
