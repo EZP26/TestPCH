@@ -1,42 +1,37 @@
 public class academicProfile {
-    private int satScore;          // out of 1600
-    private int actScore;          // out of 36
-    private double gpa;            // 0.0 - 4.0
-    private double top10Percent;   // % of students in top 10% of HS class
+    private int SAT;
+    private int ACT;
+    private double GPA;
+    private double top10Percent;
     private double graduationRate;
 
-    public academicProfile(int satScore, int actScore, double gpa, double top10Percent, double graduationRate) {
-        this.satScore = satScore;
-        this.actScore = actScore;
-        this.gpa = gpa;
+    public academicProfile(int SAT, int ACT, double GPA, double top10Percent, double graduationRate) {
+        this.SAT = SAT;
+        this.ACT = ACT;
+        this.GPA = GPA;
         this.top10Percent = top10Percent;
-        this.graduationRate = graduationRate/100;
-    }
-
-    public int getSatScore() {
-        return satScore;
-    }
-
-    public int getActScore(){
-        return actScore;
-    }
-
-    public double getGpa() {
-        return gpa;
-    }
-
-    public double getTop10Percent() {
-        return top10Percent;
+        this.graduationRate = graduationRate / 100.0;
     }
 
     public double calculateAcademicScore() {
-        double satNormalized = satScore / 1600.0;      // 1600 is max SAT
-        double actNormalized = actScore / 36;          // 36 is max ACT
-        double gpaNormalized = gpa / 4.0;              // 4.0 is max GPA
-        double classRankNormalized = top10Percent / 100.0;
+        double newSatScore = 100.22186 * Math.log(0.001648 * SAT);
+        
+        double newActScore = 100.22186 * Math.log(0.0749 * ACT);
+        
+        double newGpaScore = 1.4427 * Math.log(GPA) - 1;
+        
+        double classRankNormalized = top10Percent;
+        
+        double gradScore = graduationRate * 100;
 
-        return ((satNormalized + actNormalized)* 0.20 + 
-                graduationRate * 0.40 + 
-                (gpaNormalized + classRankNormalized) * 0.20) * 100;
+        double rawScore = ((newSatScore + newActScore) * 0.20 +
+                           gradScore * 0.40 +
+                           (newGpaScore + classRankNormalized) * 0.20);
+
+        double scaledScore = 2.0 + ((rawScore - 50) / 50.0) * 2.0;
+
+        scaledScore = Math.max(2.0, Math.min(4.0, scaledScore));
+
+        return scaledScore;
     }
 }

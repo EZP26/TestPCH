@@ -6,7 +6,7 @@ public class College {
     private double racialDiversity;
     private double score;
 
-    public College(String name, int tuition, double academicProfile, double earnings, double racialDiversityScore){
+    public College(String name, int tuition, double academicProfile, double earnings, double racialDiversityScore) {
         this.name = name;
         this.tuition = tuition;
         this.academicProfile = academicProfile;
@@ -15,24 +15,34 @@ public class College {
     }
 
     public double calculateScore(double tuitionWeight, double academicProfileWeight, double earningsWeight, double racialDiversityWeight,
-    double maxTuition, double maxAcademic, double maxEarnings){
-        
+                                 double maxTuition, double maxAcademic, double maxEarnings, double hardCap) {
+
         double totalWeight = tuitionWeight + academicProfileWeight + earningsWeight + racialDiversityWeight;
 
-            double tuitionScore = 1 - (tuition / maxTuition);
-            double academicProfileScore = academicProfile / maxAcademic;
-            double earningsScore = earnings / maxEarnings;
+        double safeTuition = Math.max(tuition, 1000); 
+        double safeEarnings = Math.max(earnings, 1000); 
 
-            score = (
-                (tuitionScore * tuitionWeight) +
-                (academicProfileScore * academicProfileWeight) +
-                (earningsScore * earningsWeight) +
-                (racialDiversity * racialDiversityWeight)
-                ) / totalWeight * 100;
-        
+        double tuitionPenalty = (tuition > hardCap) ? 0.0 : 1.0 / (1.0 + Math.exp((safeTuition - maxTuition * 0.8) / 2000));
+        double tuitionScore = 1 - (Math.log(safeTuition) / Math.log(maxTuition));
+        tuitionScore *= tuitionPenalty;
+
+        double academicProfileScore = academicProfile / maxAcademic;
+
+        double earningsNormalized = Math.log(safeEarnings) / Math.log(maxEarnings);
+        double roi = Math.log(safeEarnings / safeTuition) / Math.log(maxEarnings / 1000);
+        double earningsScore = 0.6 * earningsNormalized + 0.4 * roi; 
+
+        score = (
+            (tuitionScore * tuitionWeight) +
+            (academicProfileScore * academicProfileWeight) +
+            (earningsScore * earningsWeight) +
+            (racialDiversity * racialDiversityWeight)
+        ) / totalWeight * 100;
+
         return score;
     }
 
+    // Accessors
     public String getName() {
         return name;
     }
@@ -45,7 +55,7 @@ public class College {
         return academicProfile;
     }
 
-    public double getScore(){
+    public double getScore() {
         return score;
     }
 
