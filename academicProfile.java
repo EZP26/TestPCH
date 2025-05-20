@@ -32,6 +32,6 @@ public class academicProfile {
 
         scaledScore = Math.max(2.0, Math.min(4.0, scaledScore));
 
-        return scaledScore;
+        return scaledScore * 20;
     }
 }

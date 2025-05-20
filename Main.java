@@ -24,6 +24,9 @@ public class Main {
         System.out.print("How important is having a high income 10 years after graduation? Enter a number between 0 and 100:  ");
         int earningsWeight = scanner.nextInt();
 
+        System.out.print("How important is economic mobility (bang for your buck)? Enter a number between 0 and 100:  ");
+        int economicMobilityWeight = scanner.nextInt();
+
         System.out.print("How important is racial diversity to you? Enter a number between 0 and 100:  ");
         int racialDiversityWeight = scanner.nextInt();
 
@@ -48,14 +51,19 @@ public class Main {
         College SonomaState = new College("SonomaState", 5742, SonomaAP.calculateAcademicScore(), 65986, SonomaRD.calculateRacialDiversity());
         colleges.add(SonomaState);
 
-        rankColleges(colleges, tuitionWeight, academicProfileWeight, earningsWeight, racialDiversityWeight, maxTuition, maxAcademicProfile, maxEarnings, hardCap);
+        rankColleges(colleges, tuitionWeight, academicProfileWeight, earningsWeight,
+                    racialDiversityWeight, economicMobilityWeight,
+                    maxTuition, maxAcademicProfile, maxEarnings, hardCap);
         scanner.close();
     }
 
-    public static void rankColleges(ArrayList<College> colleges, double tuitionWeight, double academicWeight, double earningsWeight, double racialDiversityWeight,
-        double maxTuition, double maxAcademic, double maxEarnings, double hardCap) {
+    public static void rankColleges(ArrayList<College> colleges, double tuitionWeight, double academicWeight, double earningsWeight,
+                                    double racialDiversityWeight, double economicMobilityWeight,
+                                    double maxTuition, double maxAcademic, double maxEarnings, double hardCap) {
         for (College college : colleges) {
-            college.calculateScore(tuitionWeight, academicWeight, earningsWeight, racialDiversityWeight, maxTuition, maxAcademic, maxEarnings, hardCap);
+            college.calculateScore(tuitionWeight, academicWeight, earningsWeight,
+                                racialDiversityWeight, economicMobilityWeight,
+                                maxTuition, maxAcademic, maxEarnings, hardCap);
         }
 
         // Insertion sort (descending order by score)
@@ -69,15 +77,15 @@ public class Main {
             colleges.set(j + 1, key);
         }
 
-        // Print rankings
-        double totalWeight = earningsWeight + academicWeight + tuitionWeight + racialDiversityWeight;
-        System.out.println("Your Rankings:");
-        System.out.printf("Earnings: %.1f%% Academic Profile: %.1f%% Tuition: %.1f%% Racial Diversity: %.1f%%\n",
+        double totalWeight = tuitionWeight + academicWeight + earningsWeight + racialDiversityWeight + economicMobilityWeight;
+        System.out.printf("Earnings: %.1f%% Academic Profile: %.1f%% Tuition: %.1f%% Racial Diversity: %.1f%% Economic Mobility: %.1f%%\n",
             (earningsWeight / totalWeight) * 100,
             (academicWeight / totalWeight) * 100,
             (tuitionWeight / totalWeight) * 100,
-            (racialDiversityWeight / totalWeight) * 100);
-
+            (racialDiversityWeight / totalWeight) * 100,
+            (economicMobilityWeight / totalWeight) * 100);
+    
+        // Print rankings
         System.out.println("College Rankings:");
         for (int i = 0; i < colleges.size(); i++) {
             College c = colleges.get(i);
