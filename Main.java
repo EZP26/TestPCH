@@ -1,17 +1,28 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<College> colleges = new ArrayList<College>();
+         Scanner scanner = new Scanner(System.in);
         int maxTuition = 90000;
         int maxAcademicProfile = 100;
         int maxEarnings = 100000;
 
-        //Change These Three Numbers from 0 to 100
-        int tuitionWeight =  100;
-        int academicProfileWeight = 100;
-        int earningsWeight = 100;
-        int racialDiversityWeight = 100;
+        System.out.println("Welcome to the College Ranking System!");
+        System.out.println("Enter a value between 0 and 100 for each category.");
+        
+        System.out.print("How important is low tuition to you? ");
+        int tuitionWeight = scanner.nextInt();
+
+        System.out.print("How important is academic profile to you? ");
+        int academicProfileWeight = scanner.nextInt();
+
+        System.out.print("How important is having a high income 10 years after graduation?");
+        int earningsWeight = scanner.nextInt();
+
+        System.out.print("How important is racial diversity to you? ");
+        int racialDiversityWeight = scanner.nextInt();
 
         academicProfile HarvardAP = new academicProfile(1550, 35, 3.94, 94.4, 98);
         racialDiversity HarvardRD = new racialDiversity(7110-1029-87, 826, 668, 2249, 23, 1674, 9, 545);
@@ -34,6 +45,7 @@ public class Main {
         colleges.add(SonomaState);
         
         rankColleges(colleges, tuitionWeight, academicProfileWeight, earningsWeight, racialDiversityWeight, maxTuition, maxAcademicProfile, maxEarnings);
+        scanner.close();
      }
 
     public static void rankColleges(ArrayList<College> colleges, double tuitionWeight, double academicWeight, double earningsWeight, double racialDiversityWeight,
@@ -58,14 +70,11 @@ public class Main {
         double totalWeight = (earningsWeight + academicWeight + tuitionWeight + racialDiversityWeight)/100;
         System.out.println("Your Rankings: \n Earnings: " + (int) earningsWeight/totalWeight + "% Academic Profile: " + (int) academicWeight/totalWeight 
         + "% Tuition: " + (int) tuitionWeight/totalWeight + " Racial Diversity: " + (int) racialDiversityWeight/totalWeight + "%");
-        
+
         System.out.println("College Rankings:");
         for (int i = 0; i < colleges.size(); i++) {
             College c = colleges.get(i);
             System.out.printf("%d. %s (Score: %.2f)\n", i + 1, c.getName(), c.getScore());
         }
     }
-    
 }
-    
-
