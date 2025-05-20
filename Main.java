@@ -15,10 +15,10 @@ public class Main {
         System.out.print("How important is low tuition to you? ");
         int tuitionWeight = scanner.nextInt();
 
-        System.out.print("How important is academic profile to you? ");
+        System.out.print("How important is a school with high academic rigor to you? ");
         int academicProfileWeight = scanner.nextInt();
 
-        System.out.print("How important is having a high income 10 years after graduation?");
+        System.out.print("How important is having a high income 10 years after graduation? ");
         int earningsWeight = scanner.nextInt();
 
         System.out.print("How important is racial diversity to you? ");
@@ -67,9 +67,13 @@ public class Main {
         }
     
         // Print the rankings
-        double totalWeight = (earningsWeight + academicWeight + tuitionWeight + racialDiversityWeight)/100;
-        System.out.println("Your Rankings: \n Earnings: " + (int) earningsWeight/totalWeight + "% Academic Profile: " + (int) academicWeight/totalWeight 
-        + "% Tuition: " + (int) tuitionWeight/totalWeight + " Racial Diversity: " + (int) racialDiversityWeight/totalWeight + "%");
+        double totalWeight = earningsWeight + academicWeight + tuitionWeight + racialDiversityWeight;
+        System.out.println("Your Rankings:");
+        System.out.printf("Earnings: %.1f%% Academic Profile: %.1f%% Tuition: %.1f%% Racial Diversity: %.1f%%\n",
+            (earningsWeight / totalWeight) * 100,
+            (academicWeight / totalWeight) * 100,
+            (tuitionWeight / totalWeight) * 100,
+            (racialDiversityWeight / totalWeight) * 100);
 
         System.out.println("College Rankings:");
         for (int i = 0; i < colleges.size(); i++) {

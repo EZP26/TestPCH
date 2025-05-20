@@ -17,10 +17,19 @@ public class College {
     public double calculateScore(double tuitionWeight, double academicProfileWeight, double earningsWeight, double racialDiversityWeight,
     double maxTuition, double maxAcademic, double maxEarnings){
         
-        double tuitionScore = 1 - (tuition / maxTuition);
-        double academicProfileScore = academicProfile / maxAcademic;
-        double earningsScore = earnings / maxEarnings;
-        score = (tuitionScore * tuitionWeight + academicProfileScore * academicProfileWeight + earningsScore * earningsWeight + racialDiversity * racialDiversityWeight);
+        double totalWeight = tuitionWeight + academicProfileWeight + earningsWeight + racialDiversityWeight;
+
+            double tuitionScore = 1 - (tuition / maxTuition);
+            double academicProfileScore = academicProfile / maxAcademic;
+            double earningsScore = earnings / maxEarnings;
+
+            score = (
+                (tuitionScore * tuitionWeight) +
+                (academicProfileScore * academicProfileWeight) +
+                (earningsScore * earningsWeight) +
+                (racialDiversity * racialDiversityWeight)
+                ) / totalWeight * 100;
+        
         return score;
     }
 
