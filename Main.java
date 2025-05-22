@@ -51,6 +51,26 @@ public class Main {
         College SonomaState = new College("SonomaState", 5742, SonomaAP.calculateAcademicScore(), 65986, SonomaRD.calculateRacialDiversity());
         colleges.add(SonomaState);
 
+        academicProfile StanfordAP = new academicProfile(1540, 35, 3.94, 97.8, 91.9);
+        racialDiversity StanfordRD = new racialDiversity(7904-39-965, 1501, 644, 1754, 62, 2199, 16, 724);
+        College Stanford = new College("Stanford", 67731, StanfordAP.calculateAcademicScore(), 124000, StanfordRD.calculateRacialDiversity());
+        colleges.add(Stanford);
+
+        academicProfile UofIUCAP = new academicProfile(1450, 32, -1, 54, 87);
+        racialDiversity UofIUCRD = new racialDiversity(8565-245-511, 2871, 193, 3707, 36, 428, 27, 547);
+        College UofIUC = new College("UIUC", 15201, UofIUCAP.calculateAcademicScore(), 81054, UofIUCRD.calculateRacialDiversity());
+        colleges.add(UofIUC);
+
+        academicProfile PennStateAP = new academicProfile(1330, 30, 3.2, 37, 86);
+        racialDiversity PennStateRD = new racialDiversity(42619-3989-1052, 3963, 1929, 26660, 50, 3224, 29, 1723);
+        College PennState = new College("PennState", 5742, PennStateAP.calculateAcademicScore(), 111000, PennStateRD.calculateRacialDiversity());
+        colleges.add(PennState);
+
+        academicProfile UofTexaDallasAP = new academicProfile(1280, 28, 3.71, 39.95, 75);
+        racialDiversity UofTexaDallasRD = new racialDiversity(21858-1205-737, 3992, 1298, 4496, 37, 9287, 8, 798);
+        College UofTexaDallas = new College("UofTexaDallas", 17435, UofTexaDallasAP.calculateAcademicScore(), 68227, UofTexaDallasRD.calculateRacialDiversity());
+        colleges.add(UofTexaDallas);
+
         rankColleges(colleges, tuitionWeight, academicProfileWeight, earningsWeight,
                     racialDiversityWeight, economicMobilityWeight,
                     maxTuition, maxAcademicProfile, maxEarnings, hardCap);
