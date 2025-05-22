@@ -66,7 +66,7 @@ public class Main {
                 colleges.add(Stanford);
 
                 // Completed and Correct
-                academicProfile UofIUCAP = new academicProfile(1450, 32, 3.8, 54, 87);
+                academicProfile UofIUCAP = new academicProfile(1450, 32, -1, 54, 87);
                 racialDiversity UofIUCRD = new racialDiversity(35564 - 5220 - 532, 4343, 1955, 13627, 10, 8000, 13,
                                 1364);
                 College UofIUC = new College("UIUC", 31832, UofIUCAP.calculateAcademicScore(), 81054,
@@ -82,7 +82,7 @@ public class Main {
                 colleges.add(PennState);
 
                 // Completed and Correct
-                academicProfile UofTexaDallasAP = new academicProfile(1280, 28, 3.71, 39.95, 70);
+                academicProfile UofTexaDallasAP = new academicProfile(1280, 28, -1, 39.95, 70);
                 racialDiversity UofTexaDallasRD = new racialDiversity(21858 - 1205 - 737, 3992, 1298, 4496, 37, 9287, 8,
                                 798);
                 College UofTexaDallas = new College("UofTexaDallas", 36139, UofTexaDallasAP.calculateAcademicScore(),
