@@ -28,14 +28,14 @@ public class College {
 
         /*
          * A penalty is applied if the tuition is above a specified hardCap.
-         * The penalty uses a sigmoid funciton that sharply drops off after around 80%
+         * The penalty uses a sigmoid function that sharply drops off after around 80%
          * of maxTuition
          * 
          * The tuition score decreases logarithmically as tuition increases.
-         * This helps to model diminishing affordablity: tuition differences matter more
+         * This helps to model diminishing affordability: tuition differences matter more
          * at the lower end
          * like 5k to 10k compared to 50k to 55k. This gives bonus points to extremely
-         * cheapschools like
+         * cheap schools like
          * state schools.
          */
         double tuitionPenalty = (tuition > hardCap) ? 0.0
@@ -67,8 +67,8 @@ public class College {
         double roi = Math.log(safeEarnings / safeTuition) / Math.log(maxEarnings / 1000);
         double earningsScore = 0.6 * earningsNormalized + 0.4 * roi;
 
-        // Seperate score that measures purely based on ROI. This reflects
-        // economicmobility potential:
+        // Separate score that measures purely based on ROI. This reflects
+        // economic mobility potential:
         // how much value students get from their tuition investment
         double economicMobilityScore = roi;
 

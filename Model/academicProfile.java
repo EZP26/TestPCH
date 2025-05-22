@@ -20,7 +20,7 @@ public class academicProfile {
         double classRankNormalized = top10Percent;
         double gradScore = graduationRate;
         /*
-         * Explainations for Weighting:
+         * Explanations for Weighting:
          * 
          * -Test Scores (ACT & SAT): Combined, these make up 35% of the academic profile
          * score.
@@ -53,10 +53,10 @@ public class academicProfile {
          * We think this is important because it shows the school's ability to support
          * students through
          * completion. A higher graduation rate often indicates strong advising,
-         * adademic resources, and
+         * academic resources, and
          * student satisfaction. It also indicates the academic drive of the students
          * that attend the college,
-         * and the overall competetiveness or rigour that each students is expected to
+         * and the overall competitiveness or rigour that each students is expected to
          * have. It's a key
          * indicator of both institutional quality and student success. Wew weighted it
          * more heavily than
@@ -87,7 +87,7 @@ public class academicProfile {
         /*
          * We used logarithmic functions for SAT, ACT, and GPA inputs to reduce the
          * impact of small changes
-         * for already highscores compared to small changes for lower scores. For
+         * for already high scores compared to small changes for lower scores. For
          * example, the difference
          * between 1100 and 1200 on the SAT means a lot more than 1500 to 1600 for
          * college admissions. A
@@ -100,7 +100,7 @@ public class academicProfile {
          * scaled so that they are within the ranges that are possible, SAT is between
          * 600 and 1600 because
          * 600 is the minimum score that you would get if you guess and 1600 is the
-         * maximum score achieveable.
+         * maximum score achievable.
          * For ACT it is 0 and 36; For GPA it's 2.0 and 4.0.
          */
         if (SAT != -1 && SAT > 0) {
