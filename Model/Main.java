@@ -82,13 +82,13 @@ public class Main {
                 colleges.add(PennState);
 
                 // Completed and Correct
-                academicProfile UofTexaDallasAP = new academicProfile(1280, 28, -1, 39.95, 70);
-                racialDiversity UofTexaDallasRD = new racialDiversity(21858 - 1205 - 737, 3992, 1298, 4496, 37, 9287, 8,
+                academicProfile UofTexasDallasAP = new academicProfile(1280, 28, -1, 39.95, 70);
+                racialDiversity UofTexasDallasRD = new racialDiversity(21858 - 1205 - 737, 3992, 1298, 4496, 37, 9287, 8,
                                 798);
-                College UofTexaDallas = new College("UofTexaDallas", 36139, UofTexaDallasAP.calculateAcademicScore(),
+                College UofTexasDallas = new College("UofTexasDallas", 36139, UofTexasDallasAP.calculateAcademicScore(),
                                 68227,
-                                UofTexaDallasRD.calculateRacialDiversity());
-                colleges.add(UofTexaDallas);
+                                UofTexasDallasRD.calculateRacialDiversity());
+                colleges.add(UofTexasDallas);
 
                 rankColleges(colleges, tuitionWeight, academicProfileWeight, earningsWeight,
                                 racialDiversityWeight, economicMobilityWeight,
